@@ -1,5 +1,5 @@
-import { Controller, Get, Post } from '@nestjs/common';
-
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { CreateMessageDto } from '../../dto/create-message.dto';
 @Controller('message')
 export class MessageController {
     @Get()
@@ -7,8 +7,8 @@ export class MessageController {
         return 'This action returns all messages';
     }
     @Post()
-    createMessage() { 
-        return 'This action adds a new message';
+    createMessage(@Body() body: CreateMessageDto) { 
+        console.log(body)
     }
      
     @Get(':id')
